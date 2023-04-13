@@ -66,7 +66,11 @@ formulario.addEventListener("submit", (e) => {
         let columnitas = document.createElement(`td`);
         for (const dato in data) {
             if (dato == element.id) {
-                columnitas.innerText = (data[dato])
+                if (dato=="color"){
+                    console.log(`el dato es color: ${obj.color}`)
+                    columnitas.style.backgroundColor=obj.color}
+                else {
+                columnitas.innerText = (data[dato])}
             };
         }
         fila.appendChild(columnitas)
