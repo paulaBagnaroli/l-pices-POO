@@ -1,5 +1,8 @@
 
 let obj = undefined; //por qué pone undefined???
+
+//No pude hacerlo con #marca, intenté con un getter pero no puedo 
+
 let color = document.querySelector(`[name="color"]`);
 let dimension = document.querySelector(`[name="dimension"]`);
 let marcas = document.querySelectorAll(`[name="marca"]`);
@@ -8,34 +11,33 @@ let material = document.querySelectorAll(`[name="material"]`);
 
 
 class lapiz {
-    constructor({color = "#fff700",
+    #marca // me había faltado poner esto acá, por eso no funcionaba.
+    constructor({ color = "#fff700",
         dimension = 19,
         marca = "Mongo",
         borrador = "Tiene",
         material = "Madera",
-}) {
+    }) {
         this.color = color;
         this.dimension = dimension;
-        this.marca = marca;
+        this.#marca = marca;
         this.borrador = borrador;
         this.material = material;
-        
     }
     obtener(datos) {
         this.color = datos.color;
-        this.marca = datos.marca;
+        this.#marca = datos.marca;
         this.material = datos.material;
         this.borrador = datos.borrador;
         this.dimension = datos.dimension;
     }
-   }
-
-
+    getMarca(){return this.#marca};
+}
 addEventListener("DOMContentLoaded", (e) => {
     let obj = new lapiz({});
     color.value = obj.color;
     dimension.value = obj.dimension;
-    const marcaPorDefecto = Array.from(marcas).find(marca => marca.value === obj.marca);
+    const marcaPorDefecto = Array.from(marcas).find(marca => marca.value === obj.getMarca());
     if (marcaPorDefecto) {
         marcaPorDefecto.checked = true;
     }
