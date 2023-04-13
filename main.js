@@ -35,7 +35,6 @@ addEventListener("DOMContentLoaded", (e) => {
     let obj = new lapiz({});
     color.value = obj.color;
     dimension.value = obj.dimension;
-    //ESTO FUE LO QUE BUSQUÉ EN CHAT GPT
     const marcaPorDefecto = Array.from(marcas).find(marca => marca.value === obj.marca);
     if (marcaPorDefecto) {
         marcaPorDefecto.checked = true;
